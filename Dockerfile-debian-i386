@@ -1,0 +1,5 @@
+FROM scratch
+MAINTAINER Remi Hakim @remh
+ADD squeeze-386.tar.xz /
+ENTRYPOINT ["/usr/bin/linux32"]
+CMD ["/bin/bash"]
