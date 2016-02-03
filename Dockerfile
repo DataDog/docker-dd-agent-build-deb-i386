@@ -9,6 +9,10 @@ RUN apt-get update && linux32 apt-get install -y \
     gcc-multilib \
     fakeroot
 
+RUN echo "deb http://http.debian.net/debian squeeze-backports main" >/etc/apt/sources.list.d/squeeze-backports.list
+RUN apt-get update -qq && apt-get -t wheezy-backports install -y -qq \
+    git
+
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 RUN \curl -sSL https://get.rvm.io | linux32 bash -s stable
 RUN /bin/bash -l -c "rvm requirements"
