@@ -9,8 +9,8 @@ RUN apt-get update && linux32 apt-get install -y \
     gcc-multilib \
     fakeroot
 
-RUN echo "deb http://http.debian.net/debian squeeze-backports main" >/etc/apt/sources.list.d/squeeze-backports.list
-RUN apt-get update -qq && apt-get -t wheezy-backports install -y -qq \
+RUN echo "deb http://http.debian.net/debian-backports squeeze-backports main" >/etc/apt/sources.list.d/squeeze-backports.list
+RUN apt-get update -qq && apt-get -t squeeze-backports install -y -qq \
     git
 
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
