@@ -1,4 +1,4 @@
-FROM datadog/debian-i386:wheezy
+FROM vicamo/debian:wheezy-i386
 MAINTAINER Remi Hakim @remh
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
