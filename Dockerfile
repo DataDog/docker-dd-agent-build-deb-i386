@@ -1,16 +1,15 @@
-FROM datadog/debian-i386:squeeze
+FROM datadog/debian-i386:wheezy
 MAINTAINER Remi Hakim @remh
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 RUN apt-get update && linux32 apt-get install -y \
-    git \
     curl \
     procps \
     gcc-multilib \
     fakeroot
 
-RUN echo "deb http://http.debian.net/debian-backports squeeze-backports main" >/etc/apt/sources.list.d/squeeze-backports.list
-RUN apt-get update -qq && apt-get -t squeeze-backports install -y -qq \
+RUN echo "deb http://http.debian.net/debian wheezy-backports main" >/etc/apt/sources.list.d/wheezy-backports.list
+RUN apt-get update -qq && apt-get -t wheezy-backports install -y -qq \
     git
 
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
