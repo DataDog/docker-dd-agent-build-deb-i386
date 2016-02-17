@@ -26,9 +26,16 @@ RUN git config --global user.email "package@datadoghq.com" && \
     git config --global user.name "Debian Omnibus Package" && \
     git clone https://github.com/DataDog/dd-agent-omnibus.git
 
+RUN git clone https://github.com/DataDog/integrations-extras.git
+RUN git clone https://github.com/DataDog/integrations-core.git
+
 # TODO: remove the checkout line after the merge to master
 RUN cd dd-agent-omnibus && \
     linux32 /bin/bash -l -c "bundle install --binstubs"
+
+RUN /bin/bash -l -c "echo 'deb http://apt.datadoghq.com/ stable main' > /etc/apt/sources.list.d/datadog.list"
+RUN linux32 apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 C7A7DA52
+RUN linux32 apt-get update
 
 VOLUME ["/dd-agent-omnibus/pkg"]
 ENTRYPOINT linux32 /bin/bash -l /dd-agent-omnibus/omnibus_build.sh
