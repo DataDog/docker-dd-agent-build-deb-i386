@@ -3,6 +3,8 @@ MAINTAINER Remi Hakim @remh
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 RUN cat /etc/apt/sources.list | grep -v "squeeze-updates" | sed "s#http\.debian\.net#archive.debian.org#" > /etc/apt/sources.new.list && mv /etc/apt/sources.new.list /etc/apt/sources.list && echo "Acquire::Check-Valid-Until false;" > /etc/apt/apt.conf
+# FIXME
+RUN echo "130.89.148.13 archive.debian.org" >> /etc/hosts && echo "195.20.242.89 security.debian.org" >> /etc/hosts
 RUN apt-get update && linux32 apt-get install -y \
     curl \
     procps \
