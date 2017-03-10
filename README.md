@@ -1,3 +1,5 @@
+# DEPRECATED
+
 # docker-dd-agent-build-deb-i386
 This repo contains the Dockerfile used to build the Datadog Agent (https://github.com/DataDog/dd-agent).
 
